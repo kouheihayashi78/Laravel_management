@@ -1,4 +1,4 @@
-    <!doctype html>
+<!doctype html>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
@@ -100,12 +100,23 @@
                                     {{ '全て' }}
                                 </a>
                             </li>
-
+                            @foreach($tags as $tag)
+                            <li class="nav-item">
+                                
+                                <a class="nav-link active" aria-current="page" href="/?tag={{ $tag['name'] }}" >{{ $tag['name'] }}</a>
+                                
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    @if(session('success'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                     @yield('content')
                 </main>
             </div>

@@ -71,4 +71,15 @@ class MessageController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function delete(Request $request, $id)
+    {
+        $inputs = $request->all();
+        // dd($inputs);
+        Message::where('id', $id)->update(['status' => 2]);
+        // 一応物理削除も！！！
+        // Message::where('id', $id)->delete();
+
+        return redirect()->route('home')->with('success', '削除が完了しました');
+    }
 }

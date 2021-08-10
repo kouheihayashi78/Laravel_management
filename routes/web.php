@@ -21,4 +21,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/store', [App\Http\Controllers\MessageController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [App\Http\Controllers\MessageController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [App\Http\Controllers\MessageController::class, 'update'])->name('update');
+    Route::post('/delete/{id}', [App\Http\Controllers\MessageController::class, 'delete'])->name('delete');
 });
