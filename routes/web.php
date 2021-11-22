@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [App\Http\Controllers\MessageController::class, 'index'])->name('home');
-    Route::get('/create', [App\Http\Controllers\MessageController::class, 'create'])->name('create');
-    Route::post('/store', [App\Http\Controllers\MessageController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [App\Http\Controllers\MessageController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [App\Http\Controllers\MessageController::class, 'update'])->name('update');
-    Route::post('/delete/{id}', [App\Http\Controllers\MessageController::class, 'delete'])->name('delete');
+    Route::get('/', [MessageController::class, 'index'])->name('home');
+    Route::get('/create', [MessageController::class, 'create'])->name('create');
+    Route::post('/store', [MessageController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [MessageController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [MessageController::class, 'update'])->name('update');
+    Route::post('/delete/{id}', [MessageController::class, 'delete'])->name('delete');
 });

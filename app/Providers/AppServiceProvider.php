@@ -28,14 +28,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             // get the current user
             $user = \Auth::user();
-             // インスタンス化
+            // インスタンス化
             $messageModel = new Message();
-            $messages = $messageModel->myMessage( \Auth::id() );
-            
+            $messages = $messageModel->myMessage(\Auth::id());
+
             // タグに取得
-             $tagModel = new Tag();
-             $tags = $tagModel->where('user_id', \Auth::id())->get();
-            
+            $tagModel = new Tag();
+            $tags = $tagModel->where('user_id', \Auth::id())->get();
+
             $view->with('user', $user)->with('messages', $messages)->with('tags', $tags);
         });
     }
